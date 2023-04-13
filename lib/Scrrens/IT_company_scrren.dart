@@ -76,10 +76,11 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
             children: [
               //list
               Expanded(
-                child: ListView.builder(itemBuilder: (context, index) {
-                  return viwe(index);
-                },
-                itemCount: DataList.length,
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return viwe(index);
+                  },
+                  itemCount: DataList.length,
                 ),
               )
             ],
@@ -110,12 +111,12 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                             ),
                             child: img == null
                                 ? CircleAvatar(
-                              backgroundImage:
-                              AssetImage("assets/image/p1.png"),
-                            )
+                                    backgroundImage:
+                                        AssetImage("assets/image/p1.png"),
+                                  )
                                 : CircleAvatar(
-                              backgroundImage: FileImage(File("$img")),
-                            ),
+                                    backgroundImage: FileImage(File("$img")),
+                                  ),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -161,12 +162,12 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               prefixIcon: Icon(
                                 Icons.person,
@@ -176,7 +177,7 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               label: Text(
                                 "Name",
                                 style:
-                                TextStyle(fontSize: 18, color: Colors.blue),
+                                    TextStyle(fontSize: 18, color: Colors.blue),
                               ),
                             ),
                           ),
@@ -188,12 +189,12 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               prefixIcon: Icon(
                                 Icons.badge,
@@ -203,7 +204,7 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               label: Text(
                                 "it profession",
                                 style:
-                                TextStyle(fontSize: 18, color: Colors.blue),
+                                    TextStyle(fontSize: 18, color: Colors.blue),
                               ),
                             ),
                           ),
@@ -211,16 +212,17 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                           SizedBox(height: 10),
                           TextFormField(
                             controller: txtprice,
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               prefixIcon: Icon(
                                 Icons.currency_rupee,
@@ -230,7 +232,7 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               label: Text(
                                 "Price",
                                 style:
-                                TextStyle(fontSize: 18, color: Colors.blue),
+                                    TextStyle(fontSize: 18, color: Colors.blue),
                               ),
                             ),
                           ),
@@ -242,12 +244,12 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               prefixIcon: Icon(
                                 Icons.phone_sharp,
@@ -256,7 +258,7 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               label: Text(
                                 "Phone",
                                 style:
-                                TextStyle(fontSize: 18, color: Colors.blue),
+                                    TextStyle(fontSize: 18, color: Colors.blue),
                               ),
                             ),
                           ),
@@ -268,12 +270,12 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                                    BorderSide(color: Colors.blue, width: 2),
                               ),
                               prefixIcon: Icon(
                                 Icons.calendar_month_outlined,
@@ -282,7 +284,7 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               label: Text(
                                 "Date",
                                 style:
-                                TextStyle(fontSize: 18, color: Colors.blue),
+                                    TextStyle(fontSize: 18, color: Colors.blue),
                               ),
                             ),
                           ),
@@ -291,12 +293,20 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                DataList.add(ItModel(Name: txtname.text,
+                                DataList.add(ItModel(
+                                  Name: txtname.text,
                                   price: txtprice.text,
                                   img: img,
                                   phone: txtphone.text,
                                   pro: txtpro.text,
-                                  date: txtdate.text,));
+                                  date: txtdate.text,
+                                ));
+                                txtname.clear();
+                                txtprice.clear();
+                                txtphone.clear();
+                                txtpro.clear();
+                                txtdate.clear();
+                                img = null;
                               });
                               Navigator.pop(context);
                             },
@@ -337,29 +347,89 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
 
   Container viwe(int index) {
     return Container(
-              height: 125,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.blue.shade100,
-              ),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: img == null
-                        ? CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage("assets/image/p1.png"),
-                    )
-                        : CircleAvatar(
-                      radius: 30,
-                      backgroundImage: FileImage(File('$img')),
-                    ),
+      height: 125,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.blue.shade100,
+      ),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: img == null
+                ? CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage("assets/image/p1.png"),
+                  )
+                : CircleAvatar(
+                    radius: 30,
+                    backgroundImage: FileImage(File('$img')),
                   ),
-                  Text("${DataList[index].Name}"),
-                ],
+          ),
+          SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //name
+              Padding(
+                padding: const EdgeInsets.only(left: 10, bottom: 10,top: 20),
+                child: Text(
+                  "${DataList[index].Name}",
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-            );
+              //profation
+              Padding(
+                padding: const EdgeInsets.only(left: 10, bottom: 10),
+                child: Text(
+                  "${DataList[index].pro}",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                  ),
+                ),
+              ),
+              //price
+              Padding(
+                padding: const EdgeInsets.only(left: 10, bottom: 10),
+                child: Text(
+                  "${DataList[index].price}",
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          //name
+          Padding(
+            padding: const EdgeInsets.only(left: 10, bottom: 50),
+            child: Text(
+              "${DataList[index].Name}",
+              style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          //name
+          Padding(
+            padding: const EdgeInsets.only(left: 10, bottom: 50),
+            child: Text(
+              "${DataList[index].Name}",
+              style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
