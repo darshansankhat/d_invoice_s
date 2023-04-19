@@ -22,7 +22,7 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
   TextEditingController txtphone = TextEditingController();
   TextEditingController txtdate = TextEditingController();
 
-  String? img;
+  String? img1;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +60,10 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
           ),
           centerTitle: true,
           actions: [
+            InkWell(onTap: () {
+              Navigator.pushNamed(context, "save");
+            },child: Icon(Icons.save,color: Colors.black,size: 30,)),
+            SizedBox(width: 10,),
             Icon(
               Icons.more_vert,
               size: 30,
@@ -109,13 +113,13 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                               color: Colors.blue.shade100,
                               shape: BoxShape.circle,
                             ),
-                            child: img == null
+                            child: img1 == null
                                 ? CircleAvatar(
                                     backgroundImage:
                                         AssetImage("assets/image/p1.png"),
                                   )
                                 : CircleAvatar(
-                                    backgroundImage: FileImage(File("$img")),
+                                    backgroundImage: FileImage(File("$img1")),
                                   ),
                           ),
                           Row(
@@ -127,7 +131,7 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                                     XFile? xfil = await i1.pickImage(
                                         source: ImageSource.camera);
                                     setState(() {
-                                      img = xfil!.path;
+                                      img1 = xfil!.path;
                                     });
                                   },
                                   icon: Icon(
@@ -144,7 +148,7 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                                     XFile? xfil = await i1.pickImage(
                                         source: ImageSource.gallery);
                                     setState(() {
-                                      img = xfil!.path;
+                                      img1 = xfil!.path;
                                     });
                                   },
                                   icon: Icon(
@@ -292,22 +296,15 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                           SizedBox(height: 20),
                           InkWell(
                             onTap: () {
-                              setState(() {
                                 DataList.add(ItModel(
                                   Name: txtname.text,
                                   price: txtprice.text,
-                                  img: img,
+                                  img: img1,
                                   phone: txtphone.text,
                                   pro: txtpro.text,
                                   date: txtdate.text,
                                 ));
-                                txtname.clear();
-                                txtprice.clear();
-                                txtphone.clear();
-                                txtpro.clear();
-                                txtdate.clear();
-                                img = null;
-                              });
+
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -335,7 +332,11 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                     ),
                   );
                 },
-              );
+              ).then((value) {
+                setState(() {
+
+                });
+              },);
             },
             child: Icon(
               Icons.add,
@@ -349,66 +350,28 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
     return Container(
       height: 125,
       width: double.infinity,
+      margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.blue.shade100,
       ),
-      child: Row(
+      child: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: img == null
+            padding: const EdgeInsets.only(left: 10, top: 30),
+            child: img1 == null
                 ? CircleAvatar(
                     radius: 30,
                     backgroundImage: AssetImage("assets/image/p1.png"),
                   )
                 : CircleAvatar(
                     radius: 30,
-                    backgroundImage: FileImage(File('$img')),
+                    backgroundImage: FileImage(File('$img1')),
                   ),
-          ),
-          SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //name
-              Padding(
-                padding: const EdgeInsets.only(left: 10, bottom: 10,top: 20),
-                child: Text(
-                  "${DataList[index].Name}",
-                  style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              //profation
-              Padding(
-                padding: const EdgeInsets.only(left: 10, bottom: 10),
-                child: Text(
-                  "${DataList[index].pro}",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                  ),
-                ),
-              ),
-              //price
-              Padding(
-                padding: const EdgeInsets.only(left: 10, bottom: 10),
-                child: Text(
-                  "${DataList[index].price}",
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
           ),
           //name
           Padding(
-            padding: const EdgeInsets.only(left: 10, bottom: 50),
+            padding: const EdgeInsets.only(left: 80, bottom: 10, top: 20),
             child: Text(
               "${DataList[index].Name}",
               style: TextStyle(
@@ -417,16 +380,43 @@ class _IT_company_scrreState extends State<IT_company_scrre> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          //name
+//profation
           Padding(
-            padding: const EdgeInsets.only(left: 10, bottom: 50),
+            padding: const EdgeInsets.only(left: 80,top: 50),
             child: Text(
-              "${DataList[index].Name}",
+              "${DataList[index].pro}",
               style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 20,
+                color: Colors.black,
+              ),
             ),
+          ),
+//price
+          Padding(
+            padding: const EdgeInsets.only(left: 80, top: 80),
+            child: Text(
+              "${DataList[index].price}",
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.black,
+              ),
+            ),
+          ),
+//phone
+          Text(
+            "${DataList[index].phone}",
+            style: TextStyle(
+                fontSize: 25,
+                color: Colors.black,
+                fontWeight: FontWeight.bold),
+          ),
+//name
+          Text(
+            "${DataList[index].date}",
+            style: TextStyle(
+                fontSize: 25,
+                color: Colors.black,
+                fontWeight: FontWeight.bold),
           ),
         ],
       ),
